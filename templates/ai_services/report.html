@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3>🤖 AI Meeting Analysis Report</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <!-- Meeting Information -->
+
+            <h4>{{ meeting.title }}</h4>
+
+            <hr>
+
+            <p><strong>Meeting Date:</strong> {{ meeting.meeting_date }}</p>
+
+            <p><strong>Status:</strong> {{ meeting.status }}</p>
+
+            <p><strong>Created By:</strong> {{ meeting.created_by }}</p>
+
+            <hr>
+
+            <!-- Transcript -->
+
+            <h4>📝 Transcript</h4>
+
+            {% if ai_result.transcript %}
+                <div class="border rounded p-3 bg-light">
+                    <pre>{{ ai_result.transcript }}</pre>
+                </div>
+            {% else %}
+                <p>No transcript available.</p>
+            {% endif %}
+
+            <br>
+
+            <!-- Summary -->
+
+            <h4>📄 AI Summary</h4>
+
+            {% if ai_result.summary %}
+                <div class="border rounded p-3 bg-light">
+                    <pre>{{ ai_result.summary }}</pre>
+                </div>
+            {% else %}
+                <p>No summary generated.</p>
+            {% endif %}
+
+            <br>
+
+            <!-- Key Decisions -->
+
+            <h4>🎯 Key Decisions</h4>
+
+            {% if ai_result.key_decisions %}
+                <div class="border rounded p-3 bg-light">
+                    <pre>{{ ai_result.key_decisions }}</pre>
+                </div>
+            {% else %}
+                <p>No key decisions available.</p>
+            {% endif %}
+
+            <br>
+
+            <!-- Action Items -->
+
+            <h4>✅ Action Items</h4>
+
+            {% if ai_result.action_items %}
+                <div class="border rounded p-3 bg-light">
+                    <pre>{{ ai_result.action_items }}</pre>
+                </div>
+            {% else %}
+                <p>No action items available.</p>
+            {% endif %}
+
+            <br>
+
+            <!-- Processing Status -->
+
+            <h4>⚙ Processing Status</h4>
+
+            <span class="badge bg-success">
+                {{ ai_result.processing_status }}
+            </span>
+
+            <br><br>
+
+            <a href="{% url 'meeting_detail' meeting.id %}" class="btn btn-secondary">
+                ← Back to Meeting
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

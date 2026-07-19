@@ -1,0 +1,41 @@
+body{
+    margin:0;
+    background:#f4f6f9;
+    font-family:Arial;
+}
+
+.wrapper{
+    display:flex;
+}
+
+.sidebar{
+    width:260px;
+    background:#1e293b;
+    min-height:100vh;
+    color:white;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px 25px;
+}
+
+.sidebar a:hover{
+    background:#334155;
+}
+
+.main{
+    flex:1;
+}
+
+.navbar{
+    padding:15px 30px;
+}
+
+.card{
+    border:none;
+    border-radius:12px;
+    box-shadow:0 5px 10px rgba(0,0,0,.1);
+}

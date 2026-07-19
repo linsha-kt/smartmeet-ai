@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>AI Meeting Report</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <h4>{{ meeting.title }}</h4>
+
+            <hr>
+
+            <h5>Transcript</h5>
+
+            <p>{{ ai_result.transcript|linebreaks }}</p>
+
+            <hr>
+
+            <h5>Summary</h5>
+
+            <p>{{ ai_result.summary|linebreaks }}</p>
+
+            <hr>
+
+            <h5>Key Decisions</h5>
+
+            <p>{{ ai_result.key_decisions|linebreaks }}</p>
+
+            <hr>
+
+            <h5>Action Items</h5>
+
+            <p>{{ ai_result.action_items|linebreaks }}</p>
+
+            <hr>
+
+            <p>
+                <strong>Status:</strong>
+                {{ ai_result.processing_status }}
+            </p>
+
+            <a href="{% url 'meeting_detail' meeting.id %}" class="btn btn-primary">
+                Back to Meeting
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

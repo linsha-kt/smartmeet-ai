@@ -1,0 +1,77 @@
+<div class="sidebar">
+
+    <h3 class="text-center mt-4">
+
+        🎤 SmartMeet AI
+
+    </h3>
+
+    <hr>
+
+    <!-- Dashboard -->
+
+    <a href="{% url 'dashboard' %}">
+        <i class="bi bi-speedometer2"></i>
+        Dashboard
+    </a>
+
+    <!-- Meetings (Visible to Everyone) -->
+
+    <a href="{% url 'meeting_list' %}">
+        <i class="bi bi-camera-video"></i>
+        Meetings
+    </a>
+
+    <!-- Admin Only Menu -->
+
+    {% if request.user.role == "admin" %}
+
+    <a href="{% url 'employee_list' %}">
+        <i class="bi bi-people"></i>
+        Employees
+    </a>
+
+    <a href="#">
+        <i class="bi bi-check2-square"></i>
+        Tasks
+    </a>
+
+    <a href="#">
+        <i class="bi bi-file-earmark-text"></i>
+        Reports
+    </a>
+
+    <a href="#">
+        <i class="bi bi-robot"></i>
+        AI Assistant
+    </a>
+
+    <a href="#">
+        <i class="bi bi-database"></i>
+        Knowledge Base
+    </a>
+
+    {% else %}
+
+    <!-- Employee Menu -->
+
+    <a href="#">
+        <i class="bi bi-person-circle"></i>
+        My Profile
+    </a>
+
+    <a href="#">
+        <i class="bi bi-list-check"></i>
+        My Tasks
+    </a>
+
+    {% endif %}
+
+    <hr>
+
+    <a href="{% url 'logout' %}">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+    </a>
+
+</div>

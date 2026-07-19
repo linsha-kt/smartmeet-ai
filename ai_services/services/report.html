@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header">
+
+        <h3>
+
+            AI Meeting Report
+
+        </h3>
+
+    </div>
+
+    <div class="card-body">
+
+        <h4>
+
+            {{ meeting.title }}
+
+        </h4>
+
+        <hr>
+
+        <h5>
+
+            Transcript
+
+        </h5>
+
+        <p>
+
+            {{ ai_result.transcript }}
+
+        </p>
+
+        <hr>
+
+        <h5>
+
+            Summary
+
+        </h5>
+
+        <p>
+
+            {{ ai_result.summary }}
+
+        </p>
+
+        <hr>
+
+        <h5>
+
+            Key Decisions
+
+        </h5>
+
+        <p>
+
+            {{ ai_result.key_decisions }}
+
+        </p>
+
+        <hr>
+
+        <h5>
+
+            Action Items
+
+        </h5>
+
+        <p>
+
+            {{ ai_result.action_items }}
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

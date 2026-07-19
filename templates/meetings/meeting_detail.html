@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+
+            <h2 class="mb-0">
+                {{ meeting.title }}
+            </h2>
+
+            <span class="badge bg-primary">
+                {{ meeting.status }}
+            </span>
+
+        </div>
+
+        <div class="card-body">
+
+            <p>
+                <strong>Description:</strong><br>
+                {{ meeting.description }}
+            </p>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Meeting Date:</strong><br>
+                        {{ meeting.meeting_date }}
+                    </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Duration:</strong><br>
+                        {{ meeting.duration }} Minutes
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Organizer:</strong><br>
+                        {{ meeting.created_by }}
+                    </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Status:</strong><br>
+                        {{ meeting.status }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h5>Participants</h5>
+
+            <ul>
+
+                {% for participant in meeting.participants.all %}
+
+                    <li>
+                        {{ participant.first_name }}
+                        {{ participant.last_name }}
+                    </li>
+
+                {% empty %}
+
+                    <li>No participants assigned.</li>
+
+                {% endfor %}
+
+            </ul>
+
+            <hr>
+
+            {% if meeting.audio_file %}
+
+                <a href="{{ meeting.audio_file.url }}"
+                   class="btn btn-success">
+
+                    Download Audio
+
+                </a>
+
+            {% endif %}
+
+            <!-- ADMIN ONLY BUTTONS -->
+
+            {% if request.user.role == "admin" %}
+
+                <a href="{% url 'meeting_edit' meeting.id %}"
+                   class="btn btn-warning">
+
+                    Edit
+
+                </a>
+
+                <a href="{% url 'meeting_delete' meeting.id %}"
+                   class="btn btn-danger">
+
+                    Delete
+
+                </a>
+
+                <a href="{% url 'generate_ai' meeting.id %}"
+                   class="btn btn-primary">
+
+                    Generate AI Analysis
+
+                </a>
+
+            {% endif %}
+
+            <a href="{% url 'meeting_list' %}"
+               class="btn btn-secondary">
+
+                Back
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

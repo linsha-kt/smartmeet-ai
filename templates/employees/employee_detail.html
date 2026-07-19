@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+{% if employee.profile_image %}
+
+<img src="{{ employee.profile_image.url }}"
+width="150"
+height="150"
+style="border-radius:50%; object-fit:cover;">
+
+{% endif %}
+
+<h2>
+
+{{ employee.first_name }} {{ employee.last_name }}
+
+</h2>
+
+<hr>
+
+<p><strong>Email :</strong> {{ employee.email }}</p>
+
+<p><strong>Phone :</strong> {{ employee.phone }}</p>
+
+<p><strong>Department :</strong> {{ employee.department }}</p>
+
+<p><strong>Role :</strong> {{ employee.role }}</p>
+
+<a href="{% url 'employee_edit' employee.id %}"
+class="btn btn-warning">
+
+Edit
+
+</a>
+
+<a href="{% url 'employee_list' %}"
+class="btn btn-secondary">
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}
